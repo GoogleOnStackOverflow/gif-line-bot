@@ -73,7 +73,7 @@ def callback():
                 print return_message
                 line_bot_api.push_message(
                     event.source.sender_id,
-                    TextSendMessage(text=result.text)
+                    TextSendMessage(text='Hello World')
                 )
                 """
                 if(feature_enabled):
