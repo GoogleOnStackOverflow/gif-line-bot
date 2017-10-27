@@ -69,7 +69,7 @@ def callback():
                 print event.message
                 
                 result = requests.get(tenor_json_api + '&q=' + event.message.text + '&limit=5')
-                print (result.json())
+                print (result.json())['results']
                 #return_message = result.json().results[0].media.gif.url
                 #print return_message
                 line_bot_api.push_message(
