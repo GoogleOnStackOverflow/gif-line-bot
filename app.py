@@ -64,11 +64,11 @@ def callback():
     for event in events:
         if isinstance(event, MessageEvent):
             if isinstance(event.message, TextMessage):
+                if event.message.text.find('.gif') != -1:
                 #ECHO MESSAGE CODE
-                print event.source.sender_id
-                print event.message
+                query_text = event.message.text[:event.message.text.find('.gif')]
                 
-                result = requests.get(tenor_json_api + '&q=' + event.message.text + '&limit=5&locale=zh_TW')
+                result = requests.get(tenor_json_api + '&q=' + query_text + '&limit=5&locale=zh_TW')
                 
                 line_bot_api.push_message(
                     event.source.sender_id,
