@@ -77,6 +77,12 @@ def callback():
                             preview_image_url=(result.json())['results'][0]['media'][0]['gif']['preview']
                         )
                     )
+        else if isinstance(event, JoinEvent):
+            print 'GET JOIN REQUEST!'
+                line_bot_api.push_message(
+                    event.source.sender_id,
+                    TextSendMessage(text='汪汪，輸入＿＿.gif獲得支援')
+                )
 
     return 'OK'
 
