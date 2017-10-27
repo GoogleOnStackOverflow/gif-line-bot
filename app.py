@@ -74,7 +74,7 @@ def callback():
                     event.source.sender_id,
                     ImageSendMessage(
                         original_content_url=(result.json())['results'][0]['media'][0]['gif']['url'],
-                        preview_image_url=(result.json())['results'][0]['media'][0]['gif']['preview']
+                        preview_image_url=(result.json())['results'][0]['media'][0]['gif']['url']
                     )
                 )
                 """
