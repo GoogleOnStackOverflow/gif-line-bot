@@ -69,11 +69,13 @@ def callback():
                 print event.message
                 
                 result = requests.get(tenor_json_api + '&q=' + event.message.text + '&limit=5')
-                return_message = (result.json())['results'][0]['media'][0]['gif']['url']
-                print return_message
+                
                 line_bot_api.push_message(
                     event.source.sender_id,
-                    TextSendMessage(text=return_message)
+                    ImageSendMessage(
+                        original_content_url=(result.json())['results'][0]['media'][0]['gif']['url']
+                        preview_image_url=(result.json())['results'][0]['media'][0]['gif']['preview']
+                    )
                 )
                 """
                 if(feature_enabled):
