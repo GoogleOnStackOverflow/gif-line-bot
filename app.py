@@ -66,44 +66,17 @@ def callback():
             if isinstance(event.message, TextMessage):
                 if event.message.text.find('.gif') != -1:
                 #ECHO MESSAGE CODE
-                query_text = event.message.text[:event.message.text.find('.gif')]
+                    query_text = event.message.text[:event.message.text.find('.gif')]
                 
-                result = requests.get(tenor_json_api + '&q=' + query_text + '&limit=5&locale=zh_TW')
+                    result = requests.get(tenor_json_api + '&q=' + query_text + '&limit=5&locale=zh_TW')
                 
-                line_bot_api.push_message(
-                    event.source.sender_id,
-                    ImageSendMessage(
-                        original_content_url=(result.json())['results'][0]['media'][0]['gif']['url'],
-                        preview_image_url=(result.json())['results'][0]['media'][0]['gif']['preview']
-                    )
-                )
-                """
-                if(feature_enabled):
-                    if(event.message.text.find('雷丘') != -1):
-                        if(event.message.text.find('當我說') != -1 and event.message.text.find('你回') != -1):
-                            line_bot_api.push_message(
-                                event.source.sender_id,
-                                TextSendMessage(text='功能建構中')
-                            )
-                    else:
-                        line_bot_api.push_message(
-                            event.source.sender_id,
-                            TextSendMessage(text=event.message.text)
-                        )
-                #FEATURE CONTROLLER CODE
-                if(event.message.text.find('雷丘') != -1):
-                    for word in feature_enable_term:
-                        if(event.message.text.find(word) != -1):
-                            feature_enabled = True
-                    for word in feature_disable_term:
-                        if(event.message.text.find(word) != -1):
-                            feature_enabled = False
-                    return_message = ['雷丘機器人已關閉\n請使用「雷丘」...來對我下達啟動的命令','雷丘機器人開啟囉\n現在的雷丘機器人是一個頂嘴（echo）機器人\n將來你可以說「雷丘 當我說... 你回... 來設定自動回話機制」\n請使用「雷丘」...來對我下達停止的命令'][feature_enabled]
                     line_bot_api.push_message(
                         event.source.sender_id,
-                        TextSendMessage(text=return_message)
+                        ImageSendMessage(
+                            original_content_url=(result.json())['results'][0]['media'][0]['gif']['url'],
+                            preview_image_url=(result.json())['results'][0]['media'][0]['gif']['preview']
+                        )
                     )
-                """
 
     return 'OK'
 
