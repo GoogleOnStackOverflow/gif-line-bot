@@ -68,13 +68,13 @@ def callback():
                 print event.source.sender_id
                 print event.message
                 
-                result = requests.get(tenor_json_api + '&q=' + event.message.text + '&limit=5')
+                result = requests.get(tenor_json_api + '&q=' + event.message.text + '&limit=5&locale=zh_TW')
                 
                 line_bot_api.push_message(
                     event.source.sender_id,
                     ImageSendMessage(
                         original_content_url=(result.json())['results'][0]['media'][0]['gif']['url'],
-                        preview_image_url=(result.json())['results'][0]['media'][0]['gif']['url']
+                        preview_image_url=(result.json())['results'][0]['media'][0]['gif']['preview']
                     )
                 )
                 """
