@@ -20,6 +20,7 @@ import sys
 #import pyrebase
 #import hashlib
 import requests
+import urllib
 
 from argparse import ArgumentParser
 
@@ -68,6 +69,7 @@ def callback():
                 print event.source.sender_id
                 print event.message
                 
+                query_message = urllib.quote(event.message)
                 result = url.get(tenor_json_api + '&q=' + query_message + '&limit=5')
                 return_message = result.results[0].media.gif.url
                 line_bot_api.push_message(
