@@ -17,7 +17,7 @@ from __future__ import unicode_literals
 import os
 import sys
 #import googlemaps
-import pyrebase
+#import pyrebase
 #import hashlib
 import requests
 
