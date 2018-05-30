@@ -77,6 +77,31 @@ def callback():
                             preview_image_url=(result.json())['results'][0]['media'][0]['gif']['preview']
                         )
                     )
+            if isinstance(event.message, ImageMessage)
+                line_bot_api.push_message(
+                    event.source.sender_id,
+                    TextSendMessage(text='IMAGE')
+                )
+            if isinstance(event.message, VideoMessage)
+                line_bot_api.push_message(
+                    event.source.sender_id,
+                    TextSendMessage(text='VEDIO')
+                )
+            if isinstance(event.message, AudioMessage)
+                line_bot_api.push_message(
+                    event.source.sender_id,
+                    TextSendMessage(text='AUDIO')
+                )
+            if isinstance(event.message, FileMessage)
+                line_bot_api.push_message(
+                    event.source.sender_id,
+                    TextSendMessage(text='FILE')
+                )
+            if isinstance(event.message, StickerMessage)
+                line_bot_api.push_message(
+                    event.source.sender_id,
+                    TextSendMessage(text='STICKER')
+                )
         elif isinstance(event, JoinEvent):
             print 'GET JOIN REQUEST!'
             line_bot_api.push_message(
